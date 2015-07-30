@@ -62,7 +62,8 @@ public class NegativeDurationParser {
                     long hoursAsSecs = parseNumber(text, hourMatch, SECONDS_PER_HOUR, "hours");
                     long minsAsSecs = parseNumber(text, minuteMatch, SECONDS_PER_MINUTE, "minutes");
                     long seconds = parseNumber(text, secondMatch, 1, "seconds");
-                    int nanos = parseFraction(text, fractionMatch, seconds < 0 ? -1 : 1);
+                    boolean negativeSecs = secondMatch != null && secondMatch.charAt(0) == '-';
+                    int nanos = parseFraction(text, fractionMatch, negativeSecs ? -1 : 1);
                     try {
                         return create(negate, daysAsSecs, hoursAsSecs, minsAsSecs, seconds, nanos);
                     } catch (ArithmeticException ex) {
