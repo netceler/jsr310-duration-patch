@@ -5,14 +5,14 @@
 
     <groupId>com.netceler.jsr310</groupId>
     <artifactId>jsr310-duration-patch</artifactId>
-    <version>1.0</version>
+    <version>1.1-SNAPSHOT</version>
     <name>JSR 310 : Patch</name>
 
     <scm>
-        <connection>scm:git:bitbucket.org:netceler/jsr310-duration-patch.git</connection>
-        <developerConnection>scm:git:bitbucket.org:netceler/jsr310-duration-patch.git</developerConnection>
+        <connection>scm:git:github.com:netceler/jsr310-duration-patch.git</connection>
+        <developerConnection>scm:git:github.com:netceler/jsr310-duration-patch.git</developerConnection>
         <tag>HEAD</tag>
-        <url>https://bitbucket.org/netceler/jsr310-duration-patch</url>
+        <url>https://github.com/netceler/jsr310-duration-patch</url>
     </scm>
 
     <properties>
@@ -120,6 +120,29 @@
                     <target>1.8</target>
                     <source>1.8</source>
                 </configuration>
+            </plugin>
+            <plugin>
+                <artifactId>maven-source-plugin</artifactId>
+                <!-- We are using the verify phase here because it is the phase that
+                    comes before the install phase, thus making sure that the sources jar has
+                    been created before the install takes place. -->
+                <executions>
+                    <execution>
+                        <id>attach-sources</id>
+                        <phase>verify</phase>
+                        <goals>
+                            <goal>jar</goal>
+                        </goals>
+                    </execution>
+                    <execution>
+                        <id>attach-testsources</id>
+                        <phase>verify</phase>
+                        <goals>
+                            <goal>test-jar</goal>
+                        </goals>
+                    </execution>
+                </executions>
+                <inherited>true</inherited>
             </plugin>
         </plugins>
     </build>
