@@ -16,7 +16,7 @@
     </scm>
 
     <properties>
-        <jackson.version>2.12.1</jackson.version>
+        <jackson.version>2.13.4.1</jackson.version>
         <logback.version>1.2.3</logback.version>
         <project.build.sourceEncoding>UTF-8</project.build.sourceEncoding>
         <slf4j.version>1.7.25</slf4j.version>
